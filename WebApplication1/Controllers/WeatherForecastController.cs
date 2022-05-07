@@ -37,7 +37,7 @@ namespace WebApplication1.Controllers
         }
         [HttpPost]
         public async Task<string> GetString() {
-            return "222";
+            return "222333";
         }
     }
 }
