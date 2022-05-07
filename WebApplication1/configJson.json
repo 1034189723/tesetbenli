@@ -1,0 +1,29 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/{controller}/{action}", // 下游游请求模板
+      "DownstreamScheme": "http", //下游服务 schema
+      "UpstreamPathTemplate": "/api/{controller}/{action}", // 上游请求模板
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ], // 上游请求http方法
+      //下游服务的地址，如果使用LoadBalancer的话这里可以填多项
+      /*
+      LeastConnection - 最少连接，跟踪哪些服务正在处理请求，并把新请求发送到现有请求最少的服务上。该算法状态不在整个Ocelot集群中分布。
+      RoundRobin - 轮询可用的服务并发送请求。 该算法状态不在整个Ocelot集群中分布。
+      NoLoadBalancer - 不负载均衡，从配置或服务发现提供程序中取第一个可用的下游服务。
+      */
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        },
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ]
+    }
+  ]
+ }
