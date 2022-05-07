@@ -35,5 +35,9 @@ namespace WebApplication1.Controllers
             })
             .ToArray();
         }
+        [HttpPost]
+        public async Task<string> GetString() {
+            return "";
+        }
     }
 }
